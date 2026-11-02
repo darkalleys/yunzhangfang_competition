@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+data/*.sqlite3*
+test-results.txt
+data/test-*/
+data/traces/
+backups/
+~$*
+.env

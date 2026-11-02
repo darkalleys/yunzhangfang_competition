@@ -1,0 +1,296 @@
+{
+  "verified_at_utc": "2026-11-02T07:49:36.635517+00:00",
+  "python": "3.13.5",
+  "checks": [
+    {
+      "name": "import",
+      "invoices": 40,
+      "bank_records": 48,
+      "rules": 5
+    },
+    {
+      "name": "totals",
+      "result": {
+        "company_id": "C001",
+        "month": "2026-08",
+        "invoice_count": 10,
+        "bank_count": 12,
+        "invoice_total": "9046.35",
+        "bank_income": "14850.75",
+        "bank_expense": "5720.99",
+        "no_records": false,
+        "rule": {
+          "rule_id": "R001",
+          "version": "1.0",
+          "name": "金额统计说明",
+          "company_id": null,
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "kind": "amounts",
+          "threshold_cents": null,
+          "text": "发票金额为价税合计；银行收入和支出分别统计；使用整数分或十进制金额，显示两位小数。查询成功无记录才可回答零。"
+        }
+      }
+    },
+    {
+      "name": "totals",
+      "result": {
+        "company_id": "C001",
+        "month": "2026-09",
+        "invoice_count": 10,
+        "bank_count": 12,
+        "invoice_total": "9622.06",
+        "bank_income": "13000.50",
+        "bank_expense": "7180.74",
+        "no_records": false,
+        "rule": {
+          "rule_id": "R001",
+          "version": "1.0",
+          "name": "金额统计说明",
+          "company_id": null,
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "kind": "amounts",
+          "threshold_cents": null,
+          "text": "发票金额为价税合计；银行收入和支出分别统计；使用整数分或十进制金额，显示两位小数。查询成功无记录才可回答零。"
+        }
+      }
+    },
+    {
+      "name": "totals",
+      "result": {
+        "company_id": "C002",
+        "month": "2026-08",
+        "invoice_count": 10,
+        "bank_count": 12,
+        "invoice_total": "13667.05",
+        "bank_income": "18800.25",
+        "bank_expense": "9341.10",
+        "no_records": false,
+        "rule": {
+          "rule_id": "R001",
+          "version": "1.0",
+          "name": "金额统计说明",
+          "company_id": null,
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "kind": "amounts",
+          "threshold_cents": null,
+          "text": "发票金额为价税合计；银行收入和支出分别统计；使用整数分或十进制金额，显示两位小数。查询成功无记录才可回答零。"
+        }
+      }
+    },
+    {
+      "name": "totals",
+      "result": {
+        "company_id": "C002",
+        "month": "2026-09",
+        "invoice_count": 10,
+        "bank_count": 12,
+        "invoice_total": "12667.24",
+        "bank_income": "13700.75",
+        "bank_expense": "8087.24",
+        "no_records": false,
+        "rule": {
+          "rule_id": "R001",
+          "version": "1.0",
+          "name": "金额统计说明",
+          "company_id": null,
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "kind": "amounts",
+          "threshold_cents": null,
+          "text": "发票金额为价税合计；银行收入和支出分别统计；使用整数分或十进制金额，显示两位小数。查询成功无记录才可回答零。"
+        }
+      }
+    },
+    {
+      "name": "purpose_check",
+      "result": {
+        "company_id": "C001",
+        "month": "2026-09",
+        "invoice_count": 10,
+        "missing_count": 5,
+        "missing": [
+          {
+            "company_id": "C001",
+            "invoice_id": "F002",
+            "invoice_date": "2026-09-08",
+            "seller": "书林图文（模拟）",
+            "item": "复印纸、打印服务",
+            "purpose": "",
+            "remark": "",
+            "amount": "800.00"
+          },
+          {
+            "company_id": "C001",
+            "invoice_id": "F003",
+            "invoice_date": "2026-09-16",
+            "seller": "晓风快递（模拟）",
+            "item": "快递服务",
+            "purpose": "",
+            "remark": "",
+            "amount": "300.00"
+          },
+          {
+            "company_id": "C001",
+            "invoice_id": "F004",
+            "invoice_date": "2026-09-10",
+            "seller": "岭南商旅（模拟）",
+            "item": "住宿服务",
+            "purpose": "",
+            "remark": "",
+            "amount": "999.99"
+          },
+          {
+            "company_id": "C001",
+            "invoice_id": "F006",
+            "invoice_date": "2026-09-20",
+            "seller": "云桥信息服务（模拟）",
+            "item": "信息技术服务",
+            "purpose": "",
+            "remark": "按月结算",
+            "amount": "1000.01"
+          },
+          {
+            "company_id": "C001",
+            "invoice_id": "F009",
+            "invoice_date": "2026-09-29",
+            "seller": "澄宇设备（模拟）",
+            "item": "设备配件",
+            "purpose": "",
+            "remark": "",
+            "amount": "680.68"
+          }
+        ],
+        "rule": {
+          "rule_id": "R002",
+          "version": "2.0",
+          "name": "甲企业发票用途规则",
+          "company_id": "C001",
+          "effective_date": "2026-09-01",
+          "status": "active",
+          "kind": "purpose_all",
+          "threshold_cents": null,
+          "text": "每张发票都必须填写用途，空白或只有空格视为未填写，备注不能代替用途。"
+        }
+      }
+    },
+    {
+      "name": "purpose_check",
+      "result": {
+        "company_id": "C002",
+        "month": "2026-09",
+        "invoice_count": 10,
+        "missing_count": 3,
+        "missing": [
+          {
+            "company_id": "C002",
+            "invoice_id": "F002",
+            "invoice_date": "2026-09-08",
+            "seller": "星河印刷（模拟）",
+            "item": "宣传资料印刷",
+            "purpose": "",
+            "remark": "",
+            "amount": "1000.00"
+          },
+          {
+            "company_id": "C002",
+            "invoice_id": "F005",
+            "invoice_date": "2026-09-12",
+            "seller": "云桥信息服务（模拟）",
+            "item": "运维服务",
+            "purpose": "",
+            "remark": "",
+            "amount": "1000.01"
+          },
+          {
+            "company_id": "C002",
+            "invoice_id": "F006",
+            "invoice_date": "2026-09-20",
+            "seller": "栖山酒店（模拟）",
+            "item": "住宿服务",
+            "purpose": "",
+            "remark": "两日住宿",
+            "amount": "1280.50"
+          }
+        ],
+        "rule": {
+          "rule_id": "R003",
+          "version": "1.0",
+          "name": "乙企业发票用途规则",
+          "company_id": "C002",
+          "effective_date": "2026-08-01",
+          "status": "active",
+          "kind": "purpose_threshold",
+          "threshold_cents": 100000,
+          "text": "单张金额大于或等于1000元必须填写用途；低于1000元可以不填。空白视为未填写，备注不能代替用途。"
+        }
+      }
+    },
+    {
+      "name": "save_readback_isolation_and_replay",
+      "before": {
+        "company_id": "C001",
+        "invoice_id": "F002",
+        "invoice_date": "2026-09-08",
+        "seller": "书林图文（模拟）",
+        "item": "复印纸、打印服务",
+        "purpose": "",
+        "remark": "",
+        "amount": "800.00"
+      },
+      "saved": {
+        "operation_id": "smoke-op-1",
+        "saved": true,
+        "changed": true,
+        "replayed": false,
+        "matches_requested": true,
+        "readback": {
+          "company_id": "C001",
+          "invoice_id": "F002",
+          "invoice_date": "2026-09-08",
+          "seller": "书林图文（模拟）",
+          "item": "复印纸、打印服务",
+          "purpose": "命令行自测用途",
+          "remark": "",
+          "amount": "800.00"
+        }
+      },
+      "other_company_invoice": {
+        "company_id": "C002",
+        "invoice_id": "F002",
+        "invoice_date": "2026-09-08",
+        "seller": "星河印刷（模拟）",
+        "item": "宣传资料印刷",
+        "purpose": "",
+        "remark": "",
+        "amount": "1000.00"
+      }
+    },
+    {
+      "name": "permission_denied",
+      "error": {
+        "code": "permission_denied",
+        "message": "当前用户无权访问该企业。"
+      }
+    },
+    {
+      "name": "permission_denied",
+      "error": {
+        "code": "permission_denied",
+        "message": "当前用户仅有查看权限，不能修改发票。"
+      }
+    },
+    {
+      "name": "interactive_menu",
+      "output": "数据库已存在，保留当前保存的数据，不重复导入。\n数据库： C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\data\\test-smoke-2kong5a3\\smoke.sqlite3\n\n财税 Harness 第一阶段：业务工具演示（尚未接入模型）\n\n当前身份 U001 | 企业 C001 | 月份 2026-09\n1 切换身份/企业/月  2 查金额  3 查用途缺项  4 查单张发票\n5 修改用途/备注  6 查修改记录  0 退出\n选择：C001 / 2026-09\n发票：10张，价税合计 9622.06 元\n银行：12条，收入 13000.50 元，支出 7180.74 元\n依据：《金额统计说明》1.0版\n\n当前身份 U001 | 企业 C001 | 月份 2026-09\n1 切换身份/企业/月  2 查金额  3 查用途缺项  4 查单张发票\n5 修改用途/备注  6 查修改记录  0 退出\n选择：C001 / 2026-09：检查 10 张发票，4 张必须补充用途。\n  F003  300.00 元  快递服务\n  F004  999.99 元  住宿服务\n  F006  1000.01 元  信息技术服务\n  F009  680.68 元  设备配件\n依据：《甲企业发票用途规则》2.0版\n\n当前身份 U001 | 企业 C001 | 月份 2026-09\n1 切换身份/企业/月  2 查金额  3 查用途缺项  4 查单张发票\n5 修改用途/备注  6 查修改记录  0 退出\n选择："
+    },
+    {
+      "name": "reinitialize_preserves_current_data",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "test_data_isolated": true
+}

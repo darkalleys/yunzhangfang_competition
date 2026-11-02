@@ -1,0 +1,7 @@
+[
+  {"rule_id":"R001","name":"金额统计说明","version":"1.0","company_id":null,"effective_date":"2026-01-01","status":"active","kind":"amounts","threshold_cents":null,"text":"发票金额为价税合计；银行收入和支出分别统计；使用整数分或十进制金额，显示两位小数。查询成功无记录才可回答零。"},
+  {"rule_id":"R002","name":"甲企业发票用途规则","version":"1.0","company_id":"C001","effective_date":"2026-08-01","status":"inactive","kind":"purpose_threshold","threshold_cents":100000,"text":"已停用。单张金额大于或等于1000元必须填写用途。初赛不考历史规则恢复。"},
+  {"rule_id":"R002","name":"甲企业发票用途规则","version":"2.0","company_id":"C001","effective_date":"2026-09-01","status":"active","kind":"purpose_all","threshold_cents":null,"text":"每张发票都必须填写用途，空白或只有空格视为未填写，备注不能代替用途。"},
+  {"rule_id":"R003","name":"乙企业发票用途规则","version":"1.0","company_id":"C002","effective_date":"2026-08-01","status":"active","kind":"purpose_threshold","threshold_cents":100000,"text":"单张金额大于或等于1000元必须填写用途；低于1000元可以不填。空白视为未填写，备注不能代替用途。"},
+  {"rule_id":"R004","name":"银行资料说明","version":"1.0","company_id":null,"effective_date":"2026-01-01","status":"active","kind":"bank","threshold_cents":null,"text":"银行资料只读；企业和流水编号共同定位；收入支出均为正数；不能据此推断发票已付款。"}
+]

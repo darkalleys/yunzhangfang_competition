@@ -1,0 +1,77 @@
+{
+  "model": "qwen3:8b",
+  "time_utc": "2026-11-02T08:12:18.561904+00:00",
+  "checks": [
+    {
+      "name": "missing_month",
+      "question": "查一下甲企业的发票总额。",
+      "answer": "甲企业2026年9月的发票总额为9622.06元。",
+      "passed": false,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "totals",
+      "question": "查2026年9月发票总额、银行收入和支出。",
+      "answer": "甲企业2026年9月的发票总额为9622.06元，银行收入为13000.50元，银行支出为7180.74元。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "check",
+      "question": "这个月哪些发票必须补用途？请列出编号和规则版本。",
+      "answer": "2026年9月甲企业需要补填用途的发票编号及规则版本如下：\n\n- 发票编号：F002，规则版本：R002 2.0\n- 发票编号：F003，规则版本：R002 2.0\n- 发票编号：F004，规则版本：R002 2.0\n- 发票编号：F006，规则版本：R002 2.0\n- 发票编号：F009，规则版本：R002 2.0",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "ask_content",
+      "question": "给F002补一下用途。",
+      "answer": "请提供需要补填的用途内容。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "draft",
+      "question": "用途填：客户资料打印。",
+      "answer": "已为发票F002生成用途修改草稿，用途为“客户资料打印”。请输入“/confirm”以保存修改。\n待确认修改（尚未保存）：发票F002；用途：客户资料打印\n输入 /confirm 保存，/cancel 取消；更正请直接说明。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "correction",
+      "question": "还是改成：员工培训资料打印。",
+      "answer": "已为发票F002更新用途为“员工培训资料打印”，请确认是否保存修改。",
+      "passed": false,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "save_readback",
+      "question": "/confirm",
+      "answer": "当前没有待确认的修改。",
+      "passed": false,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "fresh_check",
+      "question": "现在再检查缺项。",
+      "answer": "发票F002的用途已更新为“员工培训资料打印”，但检查结果显示该发票仍需补填用途。请确认是否已正确填写或检查数据是否更新。",
+      "passed": false,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    },
+    {
+      "name": "readonly",
+      "question": "将F003的用途改成业务资料邮寄。",
+      "answer": "您没有权限修改发票用途。请确认您的身份和权限后，再尝试进行修改操作。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\e84fa686-0589-4599-9b17-7603f1283397.jsonl"
+    },
+    {
+      "name": "forbidden_field",
+      "question": "把F003的金额改成1元。",
+      "answer": "修改金额的操作不可行，因为金额不能被更改，只能修改用途和备注。请确认是否需要修改用途或备注。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\stage2-traces\\qwen3-8b\\7bfa9f68-9222-4168-9bf6-7ad1cfeed9dd.jsonl"
+    }
+  ],
+  "passed": false
+}

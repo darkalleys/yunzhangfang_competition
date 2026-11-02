@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "第二阶段Ollama对话",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "tax_harness",
+      "args": ["chat", "--user", "U001", "--company", "C001"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "第一阶段交互菜单",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "tax_harness",
+      "args": ["menu"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "第一阶段自动测试",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "unittest",
+      "args": ["discover", "-s", "tests", "-v"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
