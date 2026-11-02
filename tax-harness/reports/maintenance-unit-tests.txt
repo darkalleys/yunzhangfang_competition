@@ -1,0 +1,45 @@
+test_all_four_totals_from_current_records (test_business.AcceptanceTests.test_all_four_totals_from_current_records) ... ok
+test_cli_json_success_and_error_exit (test_business.AcceptanceTests.test_cli_json_success_and_error_exit) ... ok
+test_correction_and_clearing_are_current (test_business.AcceptanceTests.test_correction_and_clearing_are_current) ... ok
+test_decimal_conversion (test_business.AcceptanceTests.test_decimal_conversion) ... ok
+test_idempotency_and_conflict (test_business.AcceptanceTests.test_idempotency_and_conflict) ... ok
+test_import_counts_and_types (test_business.AcceptanceTests.test_import_counts_and_types) ... ok
+test_init_does_not_overwrite_saved_data (test_business.AcceptanceTests.test_init_does_not_overwrite_saved_data) ... ok
+test_invalid_month_and_scope (test_business.AcceptanceTests.test_invalid_month_and_scope) ... ok
+test_no_records_distinct_from_permission_or_failure (test_business.AcceptanceTests.test_no_records_distinct_from_permission_or_failure) ... ok
+test_not_found_invalid_changes_and_failed_write (test_business.AcceptanceTests.test_not_found_invalid_changes_and_failed_write) ... ok
+test_optional_below_threshold_can_be_filled (test_business.AcceptanceTests.test_optional_below_threshold_can_be_filled) ... ok
+test_permission_for_every_read_tool_and_write (test_business.AcceptanceTests.test_permission_for_every_read_tool_and_write) ... ok
+test_read_only_fields_rejected_atomically (test_business.AcceptanceTests.test_read_only_fields_rejected_atomically) ... ok
+test_remark_does_not_replace_purpose_and_whitespace_is_empty (test_business.AcceptanceTests.test_remark_does_not_replace_purpose_and_whitespace_is_empty) ... ok
+test_rule_is_read_from_database_not_hardcoded (test_business.AcceptanceTests.test_rule_is_read_from_database_not_hardcoded) ... ok
+test_september_missing_and_versions (test_business.AcceptanceTests.test_september_missing_and_versions) ... ok
+test_update_persistence_readback_and_same_id_isolation (test_business.AcceptanceTests.test_update_persistence_readback_and_same_id_isolation) ... ok
+test_cancel (test_chat.ChatTests.test_cancel) ... ok
+test_correction_replaces_draft (test_chat.ChatTests.test_correction_replaces_draft) ... ok
+test_correction_without_tool_is_reconsidered (test_chat.ChatTests.test_correction_without_tool_is_reconsidered) ... ok
+test_guessed_month_cannot_query (test_chat.ChatTests.test_guessed_month_cannot_query) ... ok
+test_identity_and_immutable_fields_are_enforced (test_chat.ChatTests.test_identity_and_immutable_fields_are_enforced) ... ok
+test_invalid_model_response_fails_closed (test_chat.ChatTests.test_invalid_model_response_fails_closed) ... ok
+test_invalid_tool_result_is_returned_to_model (test_chat.ChatTests.test_invalid_tool_result_is_returned_to_model) ... ok
+test_loop_is_bounded (test_chat.ChatTests.test_loop_is_bounded) ... ok
+test_malformed_call_rejected (test_chat.ChatTests.test_malformed_call_rejected) ... ok
+test_model_cannot_invent_content (test_chat.ChatTests.test_model_cannot_invent_content) ... ok
+test_month_source_validation_boundaries (test_chat.ChatTests.test_month_source_validation_boundaries) ... ok
+test_no_default_month_and_new_session_has_no_history (test_chat.ChatTests.test_no_default_month_and_new_session_has_no_history) ... ok
+test_ollama_unavailable_is_explicit (test_chat.ChatTests.test_ollama_unavailable_is_explicit) ... ok
+test_proposal_never_saves_without_confirmation (test_chat.ChatTests.test_proposal_never_saves_without_confirmation) ... ok
+test_question_clears_old_draft (test_chat.ChatTests.test_question_clears_old_draft) ... ok
+test_read_only_user_cannot_propose (test_chat.ChatTests.test_read_only_user_cannot_propose) ... ok
+test_stale_draft_rejected (test_chat.ChatTests.test_stale_draft_rejected) ... ok
+test_tool_loop_and_trace (test_chat.ChatTests.test_tool_loop_and_trace) ... ok
+test_corruption_is_rejected (test_maintenance.MaintenanceTests.test_corruption_is_rejected) ... ok
+test_refuses_existing_target (test_maintenance.MaintenanceTests.test_refuses_existing_target) ... ok
+test_restore_preserves_snapshot_and_audit (test_maintenance.MaintenanceTests.test_restore_preserves_snapshot_and_audit) ... ok
+test_schema_change_requires_migration (test_maintenance.MaintenanceTests.test_schema_change_requires_migration) ... ok
+test_wal_uncheckpointed_data_is_backed_up (test_maintenance.MaintenanceTests.test_wal_uncheckpointed_data_is_backed_up) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 1.803s
+
+OK
