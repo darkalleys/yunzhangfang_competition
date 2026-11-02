@@ -29,7 +29,7 @@ git status --short
 - `phase2-v0.2.0`：补建的第二阶段文件基线。
 - `maintenance-v0.2.1`：本次维护与备份恢复工具版本。
 
-所有提交均在本地，未推送远端；本轮提交作者为Codex，没有修改用户的全局Git身份配置。当前开发分支为 `codex/maintenance-baseline`。
+最初的维护基线在本地建立；用户随后指定GitHub仓库 `https://github.com/darkalleys/yunzhangfang_competition.git` 用于同步代码和阶段标签。具体同步状态以 `git remote -v`、`git log --all --decorate` 及远端分支校验为准。基线提交作者为Codex，没有修改用户的全局Git身份配置。当前开发分支为 `codex/maintenance-baseline`。
 
 后续每个改动应从已提交状态创建 `codex/功能名称` 分支，先实现、再执行相关测试、记录结果、审查差异、提交，验收通过后才打新的阶段标签。已有阶段标签不移动，阶段文档和证据不原地替换；新运行的报告使用新的批次目录。未通过的验证也保留，并在说明中标注适用版本。
 

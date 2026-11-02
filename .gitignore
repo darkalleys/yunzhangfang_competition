@@ -1,1 +1,4 @@
 /rollbacks/
+.env
+.env.*
+!.env.example
