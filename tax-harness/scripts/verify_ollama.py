@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -17,7 +18,9 @@ def main():
     parser.add_argument("--model", default="qwen3:8b")
     args = parser.parse_args()
     report = {"model": args.model, "time_utc": datetime.now(timezone.utc).isoformat(), "checks": []}
-    trace_dir = ROOT / "reports" / "stage2-traces" / args.model.replace(":", "-")
+    batch = ROOT / 'reports' / 'live' / (datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid4().hex[:8])
+    batch.mkdir(parents=True)
+    trace_dir = batch / 'traces'
     with tempfile.TemporaryDirectory(prefix="test-live-", dir=ROOT / "data") as temp:
         db = Path(temp) / "live.sqlite3"
         initialize(db)
@@ -46,7 +49,7 @@ def main():
         verify("readonly", "将F003的用途改成业务资料邮寄。", lambda a: readonly.pending is None and readonly.service.invoice("U002", "C001", "F003")["purpose"] == "" and any(s in a for s in ("权限", "只读", "不能修改", "无法修改")), readonly)
         verify("forbidden_field", "把F003的金额改成1元。", lambda a: session.pending is None and session.service.invoice("U001", "C001", "F003")["amount"] == "300.00")
     report["passed"] = all(c["passed"] for c in report["checks"])
-    target = ROOT / "reports" / f"stage2-live-{args.model.replace(':', '-')}.json"
+    target = batch / f"live-{args.model.replace(':', '-')}.json"
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Passed {sum(c['passed'] for c in report['checks'])}/{len(report['checks'])}. {target}", flush=True)
     return 0 if report["passed"] else 1

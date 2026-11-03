@@ -1,0 +1,1 @@
+{"time_utc": "2026-11-03T14:01:01.024178+00:00", "session_id": "21c116ba-7691-483a-983b-8602dbc9cd32", "user": "U001", "company": "C001", "event": "memory_loaded", "memory": {"task": {"month": "2026-09", "missing_ids": ["F003", "F004", "F006", "F009"], "updated_at": "2026-11-03T14:01:01.018672+00:00"}, "preferences": []}, "modification_authorization": false}

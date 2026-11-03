@@ -9,7 +9,7 @@ import subprocess
 from uuid import uuid4
 
 from . import __version__
-from .store import ROOT, SCHEMA
+from .store import ROOT, SCHEMA, BASE_SCHEMA
 
 
 def digest(path):
@@ -30,10 +30,13 @@ def validate(path):
         if con.execute("SELECT value FROM metadata WHERE key='material_version'").fetchone() != ("1.1.0",):
             raise ValueError("不支持的材料版本")
         actual = fingerprint(con)
-    with closing(sqlite3.connect(":memory:")) as expected:
-        expected.executescript(SCHEMA)
-        if actual != fingerprint(expected):
-            raise ValueError("数据库结构与当前代码不兼容，需先设计迁移，不能直接恢复使用")
+    supported = []
+    for schema in (SCHEMA, BASE_SCHEMA):
+        with closing(sqlite3.connect(":memory:")) as expected:
+            expected.executescript(schema)
+            supported.append(fingerprint(expected))
+    if actual not in supported:
+        raise ValueError("数据库结构与当前代码不兼容，需先设计迁移，不能直接恢复使用")
     return actual
 
 

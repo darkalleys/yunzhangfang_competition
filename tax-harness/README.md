@@ -1,16 +1,17 @@
 # 财税 Harness
 
-版本：0.2.1。主README说明最新用法，历史阶段与维护方式请从以下入口查看：
+版本：0.3.0。主README说明最新用法，历史阶段与维护方式请从以下入口查看：
 
 - [第一阶段说明（整理恢复版）](docs/stages/phase1-README.md)
 - [第一阶段原有验收报告](reports/第一阶段验收结果.md)
 - [第二阶段实现及验证](reports/第二阶段进展与验证说明.md)
+- [第三阶段持久任务与规则维护](docs/stages/phase3-README.md)
 - [版本维护、备份和回滚](docs/maintenance.md)
 - [按版本追加的变更记录](CHANGELOG.md)
 
 这是云账房赛题二的本地业务工具项目。已实现原始数据导入、金额查询、九月用途检查、权限控制、用途与备注修改、保存后回读，以及修改审计记录。当前提供命令行和交互菜单。
 
-第二阶段已增加Ollama自然语言对话、工具调用、同一会话内的追问与更正和逐轮运行记录。跨会话任务记忆和完整知识管理仍待下一阶段实现。原有第一阶段命令保持可用。
+第二阶段已增加Ollama自然语言对话、工具调用、同一会话内的追问与更正和逐轮运行记录。第三阶段已加入跨会话用途任务、显式偏好和规则管理入口。旧库请先运行 python -m tax_harness migrate，会自动备份。详见第三阶段说明。
 
 ## 第二阶段 AI 对话
 
@@ -39,7 +40,7 @@ python -m tax_harness chat --user U001 --company C001
 
 修改先生成草稿，明确显示尚未保存；输入 `/confirm` 才真正提交并回读，`/cancel` 取消。任何普通新消息都会使旧草稿失效，更正内容会重新生成草稿。用户本轮必须明确给出所填写的文本，程序拒绝模型推测的用途。当前同一时刻仅支持一张发票的修改草稿。发票在等待确认时被其他操作更改，会拒绝提交旧草稿。
 
-`data/traces/` 下按会话生成JSONL记录，包含用户输入、实际模型输入、工具定义、工具结果及保存回读。记录留在本地，含模拟业务数据，按需保管。新启动是新会话；该文件只用于追溯，不会自动成为跨会话记忆。
+`data/traces/` 下按会话生成JSONL记录，包含用户输入、实际模型输入、工具定义、工具结果及保存回读。记录留在本地，含模拟业务数据，按需保管。新启动是新会话；该文件只用于追溯，跨会话任务和偏好由独立数据库表管理，不从日志自动载入。
 
 真实模型验收命令：
 
@@ -47,7 +48,7 @@ python -m tax_harness chat --user U001 --company C001
 python scripts/verify_ollama.py --model qwen3:8b
 ```
 
-该命令使用独立临时库，真实模型输入和结果保存在 `reports/stage2-traces/`，汇总保存在 `reports/stage2-live-qwen3-8b.json`。它会检查追问、金额、用途缺项、草稿、更正、确认保存、最新数据及权限等流程。原有 `data/business.sqlite3` 不会被自测修改。
+该命令使用独立临时库，新验收报告按批次保存在reports/live/，原第二阶段报告保持不变。
 
 工具调用接入依据：[Ollama官方说明](https://github.com/ollama/ollama/blob/main/docs/capabilities/tool-calling.mdx)。
 
@@ -195,4 +196,4 @@ tax-harness/
   selftest.cmd        双击测试
 ```
 
-后续接入模型时可以直接调用 Service.totals、invoice、check、update 等工具。金额按整数分存储和汇总，权限在业务工具层执行，修改与审计在同一事务中提交。当前规则表保存五条初始记录，尚未提供规则导入、更新、停用的管理命令。
+后续接入模型时可以直接调用 Service.totals、invoice、check、update 等工具。金额按整数分存储和汇总，权限在业务工具层执行，修改与审计在同一事务中提交。规则维护使用 scripts/manage.py，详见第三阶段文档。

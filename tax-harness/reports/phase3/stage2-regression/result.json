@@ -1,0 +1,77 @@
+{
+  "model": "qwen3:8b",
+  "time_utc": "2026-11-03T13:53:39.689462+00:00",
+  "checks": [
+    {
+      "name": "missing_month",
+      "question": "查一下甲企业的发票总额。",
+      "answer": "请问您需要查询甲企业哪一年哪一月的发票总额？请明确具体月份。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "totals",
+      "question": "查2026年9月发票总额、银行收入和支出。",
+      "answer": "2026年9月甲企业的发票总额为9622.06元，银行收入为13000.50元，银行支出为7180.74元。数据依据规则“金额统计说明”（版本1.0）统计。\n依据：《金额统计说明》1.0版",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "check",
+      "question": "这个月哪些发票必须补用途？请列出编号和规则版本。",
+      "answer": "2026年9月甲企业以下发票必须补用途，规则版本为“甲企业发票用途规则”（版本2.0）：\n\n1. 发票编号：F002，规则版本：R002 2.0\n2. 发票编号：F003，规则版本：R002 2.0\n3. 发票编号：F004，规则版本：R002 2.0\n4. 发票编号：F006，规则版本：R002 2.0\n5. 发票编号：F009，规则版本：R002 2.0\n\n依据：《甲企业发票用途规则》2.0版\n依据：《甲企业发票用途规则》2.0版",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "ask_content",
+      "question": "给F002补一下用途。",
+      "answer": "请问您需要将F002发票的用途补为具体内容是什么？请明确提供用途或备注。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "draft",
+      "question": "用途填：客户资料打印。",
+      "answer": "已为您生成F002发票用途修改草稿，用途为“客户资料打印”。请输入“/confirm”以保存更改。\n待确认修改（尚未保存）：发票F002；用途：客户资料打印\n输入 /confirm 保存，/cancel 取消；更正请直接说明。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "correction",
+      "question": "还是改成：员工培训资料打印。",
+      "answer": "已为您更新F002发票的用途为“员工培训资料打印”，请输入“/confirm”以保存更改。\n待确认修改（尚未保存）：发票F002；用途：员工培训资料打印\n输入 /confirm 保存，/cancel 取消；更正请直接说明。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "save_readback",
+      "question": "/confirm",
+      "answer": "已保存并重新查询核对：C001，发票F002；用途：员工培训资料打印；备注：（空）。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "fresh_check",
+      "question": "现在再检查缺项。",
+      "answer": "当前2026年9月甲企业C001的发票缺项检查结果如下：\n\n- **缺项发票**：F003、F004、F006、F009（共4张）\n- **规则版本**：R002 v2.0（甲企业发票用途规则）\n\n**规则内容**：\n- 每张发票都必须填写用途，空白或只有空格视为未填写。\n- 备注不能代替用途。\n\n**待补全发票详情**：\n1. **F003**：2026-09-16，晓风快递（模拟），快递服务，金额300.00元\n2. **F004**：2026-09-10，岭南商旅（模拟），住宿服务，金额999.99元\n3. **F006**：2026-09-20，云桥信息服务（模拟），信息技术服务，金额1000.01元，备注：按月结算\n4. **F009**：2026-09-29，澄宇设备（模拟），设备配件，金额680.68元\n\n请补充这些发票的用途。\n依据：《甲企业发票用途规则》2.0版",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    },
+    {
+      "name": "readonly",
+      "question": "将F003的用途改成业务资料邮寄。",
+      "answer": "您当前的用户身份仅有查看权限，无法修改发票信息。请确认是否有其他权限或联系管理员进行操作。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\371a3402-8bc9-4f8b-b127-bd9f97d35dda.jsonl"
+    },
+    {
+      "name": "forbidden_field",
+      "question": "把F003的金额改成1元。",
+      "answer": "用户要求修改F003的金额，但根据规则，仅允许修改用途和备注，金额不能更改。请直接说明需要修改的内容。",
+      "passed": true,
+      "trace": "C:\\Users\\wsco\\Documents\\ChatGPT\\云账房比赛\\tax-harness\\reports\\phase3\\stage2-regression\\traces\\7ee1a9ff-740d-4a98-ae00-a06f73560964.jsonl"
+    }
+  ],
+  "passed": true
+}

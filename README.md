@@ -1,6 +1,6 @@
 # 云账房 AI Coding 比赛
 
-本仓库保存财税 Agent Harness 的实现、阶段说明、测试证据和维护记录。当前程序版本为0.2.1，提供本地业务工具和Ollama自然语言对话。
+本仓库保存财税 Agent Harness 的实现、阶段说明、测试证据和维护记录。当前程序版本为0.3.0，提供本地业务工具和Ollama自然语言对话。
 
 ## 开始使用
 
@@ -27,6 +27,7 @@ Windows也可双击项目中的 `start.cmd` 打开业务菜单，或 `chat.cmd` 
 - [第一阶段说明（整理恢复版）](tax-harness/docs/stages/phase1-README.md)
 - [第一阶段验收报告](tax-harness/reports/第一阶段验收结果.md)
 - [第二阶段实现与验证](tax-harness/reports/第二阶段进展与验证说明.md)
+- [第三阶段实现、用法与验收](tax-harness/docs/stages/phase3-README.md)
 - [版本维护与回滚](tax-harness/docs/maintenance.md)
 - [维护与恢复验收](tax-harness/reports/维护与恢复验收.md)
 - [变更记录](tax-harness/CHANGELOG.md)
@@ -44,11 +45,12 @@ python scripts/verify_ollama.py --model qwen3:8b
 
 在仓库根目录开始时才执行上面的 `cd tax-harness`；若已在该目录则直接运行Python命令。模型验收需要运行中的Ollama，其余自动测试可离线执行。
 
-已保留40项自动测试、独立恢复演练及10项正式模型验收的结果。新增维护测试前的第二阶段基线有35项自动测试。
+当前52项自动测试、10项原有模型回归、8项第三阶段真实验收及恢复演练通过，历史证据按阶段保留。新增维护测试前的第二阶段基线有35项自动测试。
 
 - `phase2-v0.2.0`：第二阶段代码基线。
 - `maintenance-v0.2.1`：维护与数据备份恢复工具版本。
+- `phase3-v0.3.0`：跨会话任务、显式偏好及规则维护。
 
 业务数据库、备份、日常对话日志、Ollama模型和真实密钥不纳入Git。仓库中的原始材料和选定验收记录使用比赛模拟数据。代码版本与业务数据快照分别管理，恢复操作默认写入新文件。
 
-下一阶段计划是跨会话任务恢复、长期偏好管理和规则导入、更新、停用入口。
+旧数据库升级请先在tax-harness目录运行 python -m tax_harness migrate，升级前自动备份。新初始化直接使用第三阶段结构。下一阶段计划为可视化演示入口、长对话及故障验证。

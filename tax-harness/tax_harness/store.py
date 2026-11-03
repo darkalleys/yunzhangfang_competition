@@ -44,6 +44,22 @@ CREATE INDEX bank_month ON bank_records(company_id, transaction_date);
 """
 
 
+BASE_SCHEMA = SCHEMA
+STATE_SCHEMA = """
+CREATE TABLE tasks (user_id TEXT REFERENCES users, company_id TEXT REFERENCES companies,
+ month TEXT NOT NULL, missing_json TEXT NOT NULL, updated_at TEXT NOT NULL,
+ PRIMARY KEY(user_id,company_id));
+CREATE TABLE preferences (user_id TEXT REFERENCES users, company_id TEXT REFERENCES companies,
+ key TEXT NOT NULL, value TEXT NOT NULL, source TEXT NOT NULL, updated_at TEXT NOT NULL,
+ PRIMARY KEY(user_id,company_id,key));
+CREATE TABLE state_events (id INTEGER PRIMARY KEY, user_id TEXT NOT NULL, company_id TEXT NOT NULL,
+ action TEXT NOT NULL, object_key TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE rule_events (id INTEGER PRIMARY KEY, rule_id TEXT NOT NULL, version TEXT NOT NULL,
+ action TEXT NOT NULL, created_at TEXT NOT NULL);
+"""
+SCHEMA += STATE_SCHEMA
+
+
 class BusinessError(Exception):
     def __init__(self, code, message):
         super().__init__(message)

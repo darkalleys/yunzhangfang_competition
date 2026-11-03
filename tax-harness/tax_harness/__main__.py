@@ -103,6 +103,7 @@ def parser():
     init = sub.add_parser("init", help="导入原始材料；已有数据库不会覆盖")
     init.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     sub.add_parser("menu", help="打开交互菜单")
+    sub.add_parser('migrate',help='备份并升级第三阶段数据结构')
     chat = sub.add_parser("chat", help="使用Ollama进行自然语言对话")
     chat.add_argument("--user", required=True)
     chat.add_argument("--company", required=True)
@@ -128,6 +129,10 @@ def main(argv=None):
     command = args.command or "menu"
     try:
         service = Service(args.db)
+        if command == 'migrate':
+            from .state import upgrade
+            show('migrate',upgrade(args.db),args.json)
+            return 0
         if command == "chat":
             from .chat import chat_cli
             chat_cli(args)
