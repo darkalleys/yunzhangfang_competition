@@ -187,11 +187,20 @@ class ChatSession:
             if current != pending["before"]:
                 raise BusinessError("stale_draft", "发票在草稿生成后发生变化，请重新提出修改。")
             result = self.service.update(self.user, self.company, pending["invoice_id"], pending["changes"], pending["operation_id"], expected_before=pending["before"])
-            self.record("confirmed_save", turn_id=turn_id, result=result)
-            self.memory.refresh()
+            warnings=[]
+            try:
+                self.record("confirmed_save", turn_id=turn_id, result=result)
+            except OSError:
+                warnings.append('保存已完成，但运行日志写入失败。')
+            try:
+                self.memory.refresh()
+            except (BusinessError,sqlite3.Error,OSError) as exc:
+                warnings.append('保存已完成，但任务刷新失败：'+str(exc))
             row = result["readback"]
             reply = f"已保存并重新查询核对：{row['company_id']}，发票{row['invoice_id']}；用途：{row['purpose'] or '（空）'}；备注：{row['remark'] or '（空）'}。"
+            if warnings: reply+='\n'+'\n'.join(warnings)
             self.turns.append([{"role": "user", "content": text}, {"role": "assistant", "content": reply}])
+            self.turns=self.turns[-8:]
             return reply
         # 任何新问题或更正都会使旧草稿失效，不保留可误提交的旧授权。
         previous_pending = self.pending
@@ -268,6 +277,7 @@ class ChatSession:
                     reply += "\n依据：" + "、".join(references.values())
                 current[-1] = {**response, "content": reply}
                 self.turns.append(current)
+                self.turns=self.turns[-8:]
                 self.record("answer", turn_id=turn_id, text=reply)
                 return reply
             if not isinstance(calls, list) or len(calls) > 8:

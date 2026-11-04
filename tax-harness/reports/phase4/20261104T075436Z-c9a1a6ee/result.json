@@ -1,0 +1,29 @@
+{
+  "model": "qwen3:8b",
+  "checks": [
+    {
+      "name": "bounded_real_history",
+      "passed": true,
+      "retained_turns": 8
+    },
+    {
+      "name": "long_dialogue_fresh_data",
+      "passed": true,
+      "answer": "已完成检查，2026年9月需补用途的发票有：F003、F004、F006、F009。\n依据：《甲企业发票用途规则》2.0版"
+    },
+    {
+      "name": "offline_clears_draft_no_write",
+      "passed": true
+    },
+    {
+      "name": "model_recovery",
+      "passed": true,
+      "answer": "2026年9月发票总额为9622.06元，银行收入13000.50元，支出7180.74元。\n依据：《金额统计说明》1.0版"
+    },
+    {
+      "name": "task_survives_failure",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

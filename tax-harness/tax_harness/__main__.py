@@ -104,6 +104,8 @@ def parser():
     init.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     sub.add_parser("menu", help="打开交互菜单")
     sub.add_parser('migrate',help='备份并升级第三阶段数据结构')
+    web=sub.add_parser('web',help='启动本地可视化演示页面')
+    web.add_argument('--port',type=int,default=8765)
     chat = sub.add_parser("chat", help="使用Ollama进行自然语言对话")
     chat.add_argument("--user", required=True)
     chat.add_argument("--company", required=True)
@@ -129,6 +131,10 @@ def main(argv=None):
     command = args.command or "menu"
     try:
         service = Service(args.db)
+        if command=='web':
+            from .web import serve
+            serve(args.db,args.port)
+            return 0
         if command == 'migrate':
             from .state import upgrade
             show('migrate',upgrade(args.db),args.json)

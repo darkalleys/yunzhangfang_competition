@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>云账房 · 财税助手</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
+<body>
+<div class="shell">
+  <header><div class="brand"><span class="mark">云</span><div><strong>云账房 · 财税助手</strong><small>AI CODING / 本地演示工作台</small></div></div><span class="local"><i></i> 比赛模拟 · 本地运行</span></header>
+  <section class="intro"><div><p class="eyebrow">财税工作，从一段对话开始</p><h1>查得清楚，改得有据。</h1><p>查询资料、补全发票用途，并继续上次未完成的工作。</p></div><span class="version">第四阶段 / 0.4.0</span></section>
+  <form id="connection" class="connection">
+    <label>演示用户<select id="user"><option value="U001">U001 · 可查看并修改</option><option value="U002">U002 · 仅查看甲企业</option></select></label>
+    <label>当前企业<select id="company"><option value="C001">甲企业 C001</option><option value="C002">乙企业 C002</option></select></label>
+    <label>业务月份<input id="month" type="month" value="2026-09" required></label>
+    <button id="connect" type="submit">进入会话</button><span id="identity" class="muted">选择范围后开始</span>
+  </form>
+  <div id="status" role="status" aria-live="polite">就绪。请先选择演示身份和企业。</div>
+  <section class="metrics" aria-label="金额统计">
+    <article><span>发票价税合计</span><strong id="invoice-total">—</strong><small id="invoice-count">当前月份</small></article>
+    <article><span>银行收入</span><strong id="income-total">—</strong><small>收入方向分别统计</small></article>
+    <article><span>银行支出</span><strong id="expense-total">—</strong><small>支出方向分别统计</small></article>
+  </section>
+  <main>
+    <section class="card conversation"><div class="card-head"><div><h2>与财税助手对话</h2><p>理解需求 · 查询依据 · 保存核对</p></div><span class="chip">Qwen3 · 8B</span></div>
+      <div id="messages" aria-live="polite"><div class="welcome"><span class="welcome-icon">账</span><h3>今天需要处理什么？</h3><p>进入会话后，你可以查询金额、检查缺项，或补充一张发票的用途。</p></div></div>
+      <div class="quick"><button type="button" data-quick="totals" disabled>查本月金额</button><button type="button" data-quick="check" disabled>检查用途缺项</button><button type="button" data-quick="resume" disabled>继续上次任务</button></div>
+      <section id="draft" hidden><strong>待确认修改 · 尚未保存</strong><p id="draft-text"></p><div><button type="button" id="confirm">确认保存</button><button type="button" id="cancel" class="secondary">取消草稿</button></div></section>
+      <form id="chat-form"><label class="sr-only" for="prompt">输入业务问题</label><textarea id="prompt" rows="2" placeholder="例如：将F002的用途填写为员工培训资料打印。" maxlength="6000" disabled></textarea><div class="composer-foot"><small>只允许修改发票用途和备注；保存前请核对草稿。</small><button id="send" type="submit" disabled>发送</button></div></form>
+    </section>
+    <section class="card workspace"><div class="card-head"><div><h2>工作资料</h2><p>查看当前数据与处理依据</p></div><button id="refresh" class="secondary small" disabled>刷新</button></div>
+      <div class="tabs" role="tablist" aria-label="工作资料"><button id="tab-data" role="tab" aria-selected="true" aria-controls="panel-data" data-tab="data">数据</button><button id="tab-memory" role="tab" aria-selected="false" aria-controls="panel-memory" data-tab="memory">任务与偏好</button><button id="tab-rules" role="tab" aria-selected="false" aria-controls="panel-rules" data-tab="rules">规则</button><button id="tab-records" role="tab" aria-selected="false" aria-controls="panel-records" data-tab="records">记录</button></div>
+      <div class="panel" id="panel-data" role="tabpanel" aria-labelledby="tab-data"><div id="invoices" class="empty">进入会话后显示发票资料</div><details><summary>银行收支明细（只读）</summary><div id="bank"></div></details></div>
+      <div class="panel" id="panel-memory" role="tabpanel" aria-labelledby="tab-memory" hidden><h3>未完成任务</h3><div id="task" class="empty">尚未进入会话</div><button id="clear-task" class="secondary small" disabled>删除任务记录</button><h3>长期偏好</h3><div id="preferences"></div><form id="pref-form"><label>偏好名称<input id="pref-key" placeholder="例如：style" maxlength="80" required></label><label>明确偏好<input id="pref-value" placeholder="例如：回答保持简洁" maxlength="500" required></label><button id="pref-save" type="submit" disabled>保存 / 更正偏好</button></form><p class="note">偏好只影响表达；新会话恢复任务时会重新查询，修改草稿不会恢复。</p></div>
+      <div class="panel" id="panel-rules" role="tabpanel" aria-labelledby="tab-rules" hidden><div id="rules" class="empty">进入会话后显示规则</div><p class="note">显示当前企业的规则版本及状态。规则维护使用本地管理员入口。</p></div>
+      <div class="panel" id="panel-records" role="tabpanel" aria-labelledby="tab-records" hidden><h3>修改与回读</h3><div id="audit" class="empty">尚无记录</div><h3>本会话运行依据</h3><button id="load-trace" class="secondary small" disabled>查看模型与工具记录</button><div id="trace"></div></div>
+    </section>
+  </main>
+  <footer><span>金额单位：元 · 数据来自当前本地数据库</span><span>任务恢复不会授予修改权限</span></footer>
+</div>
+</body></html>

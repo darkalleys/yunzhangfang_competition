@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "name": "connected_totals",
+      "passed": true
+    },
+    {
+      "name": "natural_query_and_task",
+      "passed": true
+    },
+    {
+      "name": "preference_button",
+      "passed": true
+    },
+    {
+      "name": "draft_not_saved",
+      "passed": true
+    },
+    {
+      "name": "confirm_save_readback",
+      "passed": true
+    },
+    {
+      "name": "other_company_unchanged",
+      "passed": true
+    },
+    {
+      "name": "resume_task_no_draft",
+      "passed": true
+    },
+    {
+      "name": "delete_preference_button",
+      "passed": true
+    },
+    {
+      "name": "rules_visible",
+      "passed": true
+    },
+    {
+      "name": "trace_current_session",
+      "passed": true
+    },
+    {
+      "name": "scope_change_requires_new_session",
+      "passed": true
+    },
+    {
+      "name": "readonly_denied",
+      "passed": true
+    },
+    {
+      "name": "unauthorized_scope_clears_data",
+      "passed": true
+    },
+    {
+      "name": "mobile_no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "no_browser_exceptions",
+      "passed": true
+    }
+  ],
+  "model": "qwen3:8b",
+  "browser": "Microsoft Edge headless",
+  "passed": true
+}

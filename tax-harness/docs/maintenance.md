@@ -1,6 +1,6 @@
 # 版本维护与回滚说明
 
-本文于2026年11月2日建立，11月3日更新。目标是让每次改动有来源、可验证，并能在独立目录恢复代码和数据。第三阶段新增记忆与规则审计表，旧库须执行 `python -m tax_harness migrate`，升级前自动备份。详见第三阶段说明。
+本文于2026年11月2日建立，11月4日更新。目标是让每次改动有来源、可验证，并能在独立目录恢复代码和数据。第三阶段新增记忆与规则审计表，旧库须执行 `python -m tax_harness migrate`，升级前自动备份。详见第三阶段说明。
 
 ## 从哪里看每一步
 
@@ -29,8 +29,9 @@ git status --short
 - `phase2-v0.2.0`：补建的第二阶段文件基线。
 - `maintenance-v0.2.1`：本次维护与备份恢复工具版本。
 - `phase3-v0.3.0`：跨会话任务、偏好与规则维护，包含备份后增量迁移。
+- `phase4-v0.4.0`：本地网页和故障验证，未改变数据库结构。
 
-最初的维护基线在本地建立；用户随后指定GitHub仓库 `https://github.com/darkalleys/yunzhangfang_competition.git` 用于同步代码和阶段标签。具体同步状态以 `git remote -v`、`git log --all --decorate` 及远端分支校验为准。基线提交作者为Codex，没有修改用户的全局Git身份配置。当前开发分支为 `codex/maintenance-baseline`。
+最初的维护基线在本地建立；用户随后指定GitHub仓库 `https://github.com/darkalleys/yunzhangfang_competition.git` 用于同步代码和阶段标签。具体同步状态以 `git remote -v`、`git log --all --decorate` 及远端分支校验为准。基线提交作者为Codex，没有修改用户的全局Git身份配置。后续开发使用codex/开头的功能分支，当前分支以git status为准。
 
 后续每个改动应从已提交状态创建 `codex/功能名称` 分支，先实现、再执行相关测试、记录结果、审查差异、提交，验收通过后才打新的阶段标签。已有阶段标签不移动，阶段文档和证据不原地替换；新运行的报告使用新的批次目录。未通过的验证也保留，并在说明中标注适用版本。
 

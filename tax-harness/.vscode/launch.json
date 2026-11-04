@@ -2,6 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "第四阶段本地网页",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "tax_harness",
+      "args": ["web"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
       "name": "第二阶段Ollama对话",
       "type": "debugpy",
       "request": "launch",
