@@ -22,6 +22,8 @@ Windows可双击web.cmd启动本地网页；也可双击项目中的 `start.cmd`
 
 ## 文档导航
 
+- [理解整个项目：架构、调用链与13个真实失败](tax-harness/docs/understanding/README.md)
+
 - [完整使用说明](tax-harness/README.md)
 - [赛题解读与实施路线](赛题解读与实施路线.md)
 - [第一阶段说明（整理恢复版）](tax-harness/docs/stages/phase1-README.md)

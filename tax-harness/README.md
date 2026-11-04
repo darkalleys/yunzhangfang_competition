@@ -9,6 +9,7 @@
 - [第四阶段本地网页与故障验证](docs/stages/phase4-README.md)
 - [版本维护、备份和回滚](docs/maintenance.md)
 - [按版本追加的变更记录](CHANGELOG.md)
+- [架构图、调用链与13个真实失败案例](docs/understanding/README.md)
 
 这是云账房赛题二的本地业务工具项目。已实现原始数据导入、金额查询、九月用途检查、权限控制、用途与备注修改、保存后回读，以及修改审计记录。当前提供命令行和交互菜单。
 
